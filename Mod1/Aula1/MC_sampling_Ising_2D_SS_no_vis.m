@@ -38,6 +38,13 @@ sort(frames)
 %
 MC_timer = tic; % timer for MC sampling
 %
+
+fig = figure;
+v = VideoWriter("video.avi");
+open(v);
+
+ax = gca;
+
 for k = 1:REP
     %
     S_vector(:,1) = randi([-1, 0], N_atm, 1)';
@@ -49,7 +56,7 @@ for k = 1:REP
     idx = 1;
     if ismember(k,frames)
         disp(k)
-        figure(1)
+%         figure(1)
         for E_index = 1:length(E_list)
             hist_E(E_index,2) = sum(E == E_list(E_index));
         end
@@ -61,14 +68,31 @@ for k = 1:REP
        
         subplot(1,2,2)
         bar(hist_M(:,1),hist_M(:,2))
-        
-        F(idx) = getframe();
+
+        drawnow();
+        F = getframe(ax);
+        writeVideo(v,F);
+%         clf(fig)
 
         idx = idx+1;
     end
 end
-disp('movie:')
-movie(F);
+% disp('movie:')
+% movie(F);
+
+%% save video
+
+
+% for k = 1:length(F(:))
+% %     movie(fig,F(k),1)
+% %     frame = getframe(gcf);
+%     writeVideo(v,F(k));
+% end
+close(gca)
+close(v)
+
+
+%% o
 
 %
 MC_time = toc(MC_timer); % register timer
