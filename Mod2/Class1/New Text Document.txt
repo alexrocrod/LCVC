@@ -1,0 +1,11 @@
+ DO Homework da aula1 ->> Prof guardou no notebook da aula2
+
+
+
+targets = [aa for aa in string.(Set(collect(values(ProtoSyn.three_2_one))))) if !(aa in ["B","P"])]
+
+ProtoSyn.write(pose, "mol1_challenge.pdb")
+for target in targets
+	ProtoSyn.Peptides.mutate!(pose, pose.graph[1,48],ProtoSyn.Peptides.grammar,[target])
+	ProtoSyn.append(pose,"mol1_challenge.pdb")
+end

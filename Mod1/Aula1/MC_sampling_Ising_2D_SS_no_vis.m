@@ -1,8 +1,8 @@
 clear
 close all
 %
-L = 4; % linear system size
-REP = 1E5; % number of randomly generated spin configurations
+L = 8; % linear system size
+REP = 1E6; % number of randomly generated spin configurations
 %
 NN = 4; % number of nearest neighbours
 N_atm = L^2; % total number of spins
@@ -26,24 +26,22 @@ hist_M(:,1) = M_list;
 %
 frames = [];
 idx = 1;
-for i= 1:9
-    for j=1:log10(REP)
+for j=1:log10(REP)-1
+    for i= 1:9
         frames(idx) = i*10^j;
         idx = idx+1;
     end
 end
-sort(frames)
+frames(idx) = REP;
 %% 
-% frames = [1 10 20 100 200 1000 2000 5000 1e4 1e5 1e6];
-%
 MC_timer = tic; % timer for MC sampling
 %
 
 fig = figure;
 v = VideoWriter("video.avi");
+v.FrameRate = 5;
 open(v);
 
-ax = gca;
 
 for k = 1:REP
     %
@@ -70,27 +68,13 @@ for k = 1:REP
         bar(hist_M(:,1),hist_M(:,2))
 
         drawnow();
-        F = getframe(ax);
+        F = getframe(fig);
         writeVideo(v,F);
-%         clf(fig)
 
         idx = idx+1;
     end
 end
-% disp('movie:')
-% movie(F);
-
-%% save video
-
-
-% for k = 1:length(F(:))
-% %     movie(fig,F(k),1)
-% %     frame = getframe(gcf);
-%     writeVideo(v,F(k));
-% end
-close(gca)
 close(v)
-
 
 %% o
 
@@ -147,12 +131,13 @@ contour(-E_list,M_list,hist_EM,100)
 %
 hist_EM(hist_EM==0)=nan;
 colorbar
-% view(2)
-view(-45,45)
+view(2)
+% view(-45,45)
 surf(-E_list,M_list,hist_EM)
+view(2)
 %
 colorbar 
-view(-45,45)
+% view(-45,45)
 % bar3(hist_EM)
 % creat_bar3_plot()
 
