@@ -32,36 +32,23 @@ theta3=19.7;
 niu=0.000531;
 omega=0.0000000001; %%% onde esta no pdf
 
+% PDF
 % P0=0.095;
 % A0=0.0071;
 % H0=0.000465;
 % R0=0.0507;
 
-P0=0.05;
-A0=0.05;
-H0=0.005;
-R0=0.0507;
+% Ma situacao inicial
+% P0=0.05;
+% A0=0.05;
+% H0=0.005;
+% R0=0.0507;
 
-
-%% Outros
-
-% - parameters --
-% alpha=0.2;
-% betaA=0.000273; 
-% betaP=0.000777; 
-% theta1=0.0003;
-% epsilon=1.5;
-% miu=0.00868; 
-% miuA=0.00775;   
-% miuH=0.0271;
-% gamma=0.00744;   
-% theta2=3*theta1; 
-% sigma=0.7;
-% zeta=0.0214;
-% theta3=16*theta1; 
-% niu=0.0155;
-% omega=0.0000000001;
-
+% Inicial Normal
+P0=0.1;
+A0=0.001;
+H0=0.0001;
+R0=0.001;
 
 %% 
 % - final time -- 

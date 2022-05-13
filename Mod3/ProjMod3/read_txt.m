@@ -4,7 +4,7 @@ close all
 
 %% Read results from file
 
-fileID=fopen('UcontrolVPDF3.txt','r');
+fileID=fopen('UcontrolVPDF4.txt','r');
 formatSpec='%f %f %f %f %f %f %f';
 xsize=[7 Inf];
 x=fscanf(fileID,formatSpec,xsize);
