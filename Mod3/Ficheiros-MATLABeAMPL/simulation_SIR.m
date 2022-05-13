@@ -8,6 +8,8 @@ global beta gamma;
 beta = 0.0055; % 0.0055
 gamma = 0.33;  % 0.33
 
+% gama/beta indica o numero de novas infecoes por dia para cada infetado
+
 
 % - final time -- 
 T = 100; 
