@@ -6,8 +6,8 @@
 #                                                  #
 ####################################################
 
- param tf   := 10; #10
- param n    := 1000; #1000
+ param tf   := 10;
+ param n    := 1000;
  param h    := tf/n;
  
  param umax = 0.8;
@@ -15,29 +15,29 @@
  
  ## initial values of state variables
  
- param P0 := 0.12 ;
- param A0 := 0.0001;
- param H0 := 0.0001;
- param R0 := 0 ;
+ param P0 := 0.095 ;
+ param A0 := 0.0071;
+ param H0 := 0.000465;
+ param R0 := 0.0507 ;
  param S0 := 1-P0-A0-H0-R0 ;
  
 
 ##  parameters 
 
- param alpha := 0.2;
- param betaA := 0.000273; 
- param betaP := 0.000777; 
- param theta1 := 0.0003;
- param epsilon := 1.5;
- param miu := 0.00868;
- param miuA := 0.00775;
- param miuH := 0.0271;
- param gamma := 0.00744;
- param theta2 := 3*theta1;
- param sigma := 0.7;
- param zeta := 0.0214;
- param theta3 := 16*theta1;
- param niu := 0.0155;
+ param alpha := 0.27;
+ param betaA := 0.000878; 
+ param betaP := 0.0000654; 
+ param theta1 := 0.222;
+ param epsilon := 2.53;
+ param miu := 0.0071;
+ param miuA := 0.00883;
+ param miuH := 0.0466;
+ param gamma := 0.00505;
+ param theta2 := 0.236;
+ param sigma := 0.102;
+ param zeta := 0.198;
+ param theta3 := 19.7;
+ param niu := 0.000531;
  param omega := 0.0000000001;
 
 
