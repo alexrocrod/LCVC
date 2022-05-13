@@ -14,70 +14,58 @@ format short
 
 global alpha betaA betaP theta1 theta2 theta3 omega gamma epsilon miu miuA miuH sigma zeta niu; 
 
-% - parameters --
-alpha=0.2;
-betaA=0.000273; 
-betaP=0.000777; 
-theta1=0.0003;
-epsilon=1.5;
-miu=0.00868; 
-miuA=0.00775;   
-miuH=0.0271;
-gamma=0.00744;   
-theta2=3*theta1; 
-sigma=0.7;
-zeta=0.0214;
-theta3=16*theta1; 
-niu=0.0155;
-omega=0.0000000001;
 
-% Outros Parametros do PDF
-% alpha=0.27;
-% betaA=0.000878; 
-% betaP=0.0000654; 
-% theta1=0.222;
-% epsilon=2.53;
-% miu=0.0071; 
-% miuA=0.00883;   
-% miuH=0.0466;
-% gamma=0.00505;   
-% theta2=0.236; 
-% sigma=0.102;
-% zeta=0.198;
-% theta3=19.7; 
-% niu=0.000531;
-% omega=0.0000000001; %%% onde esta no pdf
+%% Do PDF
+alpha=0.27;
+betaA=0.000878; 
+betaP=0.0000654; 
+theta1=0.222;
+epsilon=2.53;
+miu=0.0071; 
+miuA=0.00883;   
+miuH=0.0466;
+gamma=0.00505;   
+theta2=0.236; 
+sigma=0.102;
+zeta=0.198;
+theta3=19.7; 
+niu=0.000531;
+omega=0.0000000001; %%% onde esta no pdf
 
-
-% - final time -- 
-T = 10; %100
-
-% -- initial conditions --
-% P0=0.0553;
-% A0=0.00148;
-% H0=0.0003;
-% R0=0.0097;
-
-% check R0
-% P0=0.12;
-% % A0=0.0000000000000001;
-% % H0=0.0000000000000001;
-% A0=0.0001;
-% H0=0.0001;
-% R0=0;
-
-% Outras condicoes
-P0=0.1;
-A0=0.001;
-H0=0.0001;
-R0=0;
-
-% Outras condicoes PDF
 % P0=0.095;
 % A0=0.0071;
 % H0=0.000465;
 % R0=0.0507;
 
+P0=0.05;
+A0=0.05;
+H0=0.005;
+R0=0.0507;
+
+
+%% Outros
+
+% - parameters --
+% alpha=0.2;
+% betaA=0.000273; 
+% betaP=0.000777; 
+% theta1=0.0003;
+% epsilon=1.5;
+% miu=0.00868; 
+% miuA=0.00775;   
+% miuH=0.0271;
+% gamma=0.00744;   
+% theta2=3*theta1; 
+% sigma=0.7;
+% zeta=0.0214;
+% theta3=16*theta1; 
+% niu=0.0155;
+% omega=0.0000000001;
+
+
+%% 
+% - final time -- 
+T = 10; %100
 
 S0=1-P0-A0-H0-R0;
 
