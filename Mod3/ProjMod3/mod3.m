@@ -15,21 +15,21 @@ format short
 global alpha betaA betaP theta1 theta2 theta3 omega gamma epsilon miu miuA miuH sigma zeta niu; 
 
 %% Do PDF ParamNorm
-alpha=0.27;
-betaA=0.000878; 
-betaP=0.0000654; 
-theta1=0.222;
-epsilon=2.53;
-miu=0.0071; 
-miuA=0.00883;   
-miuH=0.0466;
-gamma=0.00505;   
-theta2=0.236; 
-sigma=0.102;
-zeta=0.198;
-theta3=19.7; 
-niu=0.000531;
-omega=0.0000000001; %%% onde esta no pdf
+% alpha=0.27;
+% betaA=0.000878; 
+% betaP=0.0000654; 
+% theta1=0.222;
+% epsilon=2.53;
+% miu=0.0071; 
+% miuA=0.00883;   
+% miuH=0.0466;
+% gamma=0.00505;   
+% theta2=0.236; 
+% sigma=0.102;
+% zeta=0.198;
+% theta3=19.7; 
+% niu=0.000531;
+% omega=0.0000000001; %%% onde esta no pdf
 
 %% Parametros simplificados
 % alpha=0.2;
@@ -85,28 +85,28 @@ omega=0.0000000001; %%% onde esta no pdf
 % omega=0.0000000001;
 
 %% Parametros bons ParamBom
-% alpha=0.1;
-% betaA=0.0001; 
-% betaP=0.00001; 
-% theta1=0.1;
-% epsilon=3;
-% miu=0; 
-% miuA=0;   
-% miuH=0;
-% gamma=0.01;   
-% theta2=0.1; 
-% sigma=0.05;
-% zeta=0.1;
-% theta3=5; 
-% niu=0.05;
-% omega=0.0000000001;
+alpha=0.1;
+betaA=0.0001; 
+betaP=0.00001; 
+theta1=0.1;
+epsilon=3;
+miu=0; 
+miuA=0;   
+miuH=0;
+gamma=0.01;   
+theta2=0.1; 
+sigma=0.05;
+zeta=0.1;
+theta3=5; 
+niu=0.05;
+omega=0.0000000001;
 
 %% 
 % PDF % usado no VarParam
-% P0=0.095;
-% A0=0.0071;
-% H0=0.000465;
-% R0=0.0507;
+P0=0.095;
+A0=0.0071;
+H0=0.000465;
+R0=0.0507;
 
 % Ma situacao inicial
 % P0=0.05;
@@ -115,14 +115,18 @@ omega=0.0000000001; %%% onde esta no pdf
 % R0=0.0507;
 
 % Inicial Normal
-P0=0.1;
-A0=0.001;
-H0=0.0001;
-R0=0.001;
+% P0=0.1;
+% A0=0.001;
+% H0=0.0001;
+% R0=0.001;
 
-fig1 = "VariaInicial/Matlab/GeralPDF4.jpg";
-fig2 = "VariaInicial/Matlab/I2PDF4.jpg";
-fig3 = "VariaInicial/Matlab/PDF4.jpg";
+% fig1 = "VariaInicial/Matlab/GeralPDF2.jpg";
+% fig2 = "VariaInicial/Matlab/I2PDF2.jpg";
+% fig3 = "VariaInicial/Matlab/PDF2.jpg";
+
+fig1 = "VariaParam/Matlab/GeralParamBom.jpg";
+fig2 = "VariaParam/Matlab/I2ParamBom.jpg";
+fig3 = "VariaParam/Matlab/ParamBom.jpg";
 
 %% 
 % - final time -- 

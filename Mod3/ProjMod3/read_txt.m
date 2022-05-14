@@ -4,14 +4,14 @@ close all
 
 %% Read results from file
 name = "PDF4";
-fig1 = sprintf("VariaInicial/Matlab/Geral%s.jpg",name);
-fig2 = sprintf("VariaInicial/Matlab/I2%s.jpg",name);
-fig3 = sprintf("VariaInicial/Matlab/%s.jpg",name);
+fig1 = sprintf("VariaInicial/Ucontrol/Geral%s.jpg",name);
+fig2 = sprintf("VariaInicial/Ucontrol/I2%s.jpg",name);
+fig3 = sprintf("VariaInicial/Ucontrol/%s.jpg",name);
 
 % name = "ParamMau";
-% fig1 = sprintf("VariaParam/Matlab/Geral%s.jpg",name);
-% fig2 = sprintf("VariaParam/Matlab/I2%s.jpg",name);
-% fig3 = sprintf("VariaParam/Matlab/%s.jpg",name);
+% fig1 = sprintf("VariaParam/Ucontrol/Geral%s.jpg",name);
+% fig2 = sprintf("VariaParam/Ucontrol/I2%s.jpg",name);
+% fig3 = sprintf("VariaParam/Ucontrol/%s.jpg",name);
 
 
 fileID=fopen(sprintf('UcontrolV%s.txt',name),'r');
