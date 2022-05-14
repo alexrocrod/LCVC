@@ -50,21 +50,21 @@ global alpha betaA betaP theta1 theta2 theta3 omega gamma epsilon miu miuA miuH 
 
 %% Parametros muito maus ParamMau
 
-% alpha=0.3;
-% betaA=0.01; 
-% betaP=0.001; 
-% theta1=0.5;
-% epsilon=1;
-% miu=0; 
-% miuA=0;   
-% miuH=0;
-% gamma=0.05;   
-% theta2=0.5; 
-% sigma=0.2;
-% zeta=0.01;
-% theta3=20; 
-% niu=0.00001;
-% omega=0.0000000001;
+alpha=0.3;
+betaA=0.01; 
+betaP=0.001; 
+theta1=0.5;
+epsilon=1;
+miu=0; 
+miuA=0;   
+miuH=0;
+gamma=0.05;   
+theta2=0.5; 
+sigma=0.2;
+zeta=0.01;
+theta3=20; 
+niu=0.00001;
+omega=0.0000000001;
 
 
 %% Parametros muito bons 
@@ -85,21 +85,21 @@ global alpha betaA betaP theta1 theta2 theta3 omega gamma epsilon miu miuA miuH 
 % omega=0.0000000001;
 
 %% Parametros bons ParamBom
-alpha=0.1;
-betaA=0.0001; 
-betaP=0.00001; 
-theta1=0.1;
-epsilon=3;
-miu=0; 
-miuA=0;   
-miuH=0;
-gamma=0.01;   
-theta2=0.1; 
-sigma=0.05;
-zeta=0.1;
-theta3=5; 
-niu=0.05;
-omega=0.0000000001;
+% alpha=0.1;
+% betaA=0.0001; 
+% betaP=0.00001; 
+% theta1=0.1;
+% epsilon=3;
+% miu=0; 
+% miuA=0;   
+% miuH=0;
+% gamma=0.01;   
+% theta2=0.1; 
+% sigma=0.05;
+% zeta=0.1;
+% theta3=5; 
+% niu=0.05;
+% omega=0.0000000001;
 
 %% 
 % PDF % usado no VarParam
@@ -120,13 +120,15 @@ R0=0.0507;
 % H0=0.0001;
 % R0=0.001;
 
-% fig1 = "VariaInicial/Matlab/GeralPDF2.jpg";
-% fig2 = "VariaInicial/Matlab/I2PDF2.jpg";
-% fig3 = "VariaInicial/Matlab/PDF2.jpg";
+% name = "PDF4";
+% fig1 = sprintf("VariaInicial/Matlab/Geral%s.jpg",name);
+% fig2 = sprintf("VariaInicial/Matlab/I2%s.jpg",name);
+% fig3 = sprintf("VariaInicial/Matlab/%s.jpg",name);
 
-fig1 = "VariaParam/Matlab/GeralParamBom.jpg";
-fig2 = "VariaParam/Matlab/I2ParamBom.jpg";
-fig3 = "VariaParam/Matlab/ParamBom.jpg";
+name = "ParamMau";
+fig1 = sprintf("VariaParam/Matlab/Geral%s.jpg",name);
+fig2 = sprintf("VariaParam/Matlab/I2%s.jpg",name);
+fig3 = sprintf("VariaParam/Matlab/%s.jpg",name);
 
 %% 
 % - final time -- 
@@ -149,7 +151,7 @@ fprintf("Erro:%d\n",erro1)
 
 %% «
 fh = figure();
-fh.WindowState = 'maximized';
+% fh.WindowState = 'maximized';
 % plot(t, z(:, 1),'-b', t, z(:, 2),'--r', t, z(:, 3), '.-g',t, z(:, 4),'-*y', t, z(:, 5),'-|k', 'LineWidth',1.5);
 plot(t, z(:, 1), t, z(:, 2), t, z(:, 3),t, z(:, 4), t, z(:, 5), 'LineWidth',1.5); 
 xlabel('time');  ylabel('Number individuals'); 
@@ -158,7 +160,7 @@ saveas(gcf,fig1)
 
 %% 
 fh = figure();
-fh.WindowState = 'maximized'; 
+% fh.WindowState = 'maximized'; 
 % plot(t, z(:, 2),'--r', t, z(:, 3), '.-g',t, z(:, 4),'-*y', t, z(:, 5),'-|k', 'LineWidth',1.5);
 plot(t, z(:, 2), t, z(:, 3),t, z(:, 4), t, z(:, 5), 'LineWidth',1.5);
 xlabel('time');  ylabel('Number individuals'); 
@@ -172,6 +174,7 @@ saveas(gca,fig2)
 % xlabel('time');  ylabel('Number individuals'); 
 % legend('A', 'H', 'R')
 
+% return
 
 %% Plots
 fh = figure();
@@ -205,10 +208,6 @@ subplot(rows,cols,5)
 plot(t,r,'LineWidth',1.5); 
 title("Recuperados (R)") 
 
-% subplot(rows,cols,6)
-% plot(t,u,'LineWidth',1.5); 
-% title("Controlo (u)") 
-
 saveas(gca,fig3)
 
 
@@ -229,34 +228,3 @@ zdot = [ - alpha.* S - betaA.* S.* A - betaP.* S.* P - theta1.* S.* H + epsilon.
          zeta.* A + niu.* H - sigma.* R.* A./(A+H+omega) - sigma.* R.* H./(A+H+omega) - miu.* R] ; 
 
 end
-%% controlo (u)  substituir o alpha (passsagem de suscetiveis para prescritos)
-
-
-% zdot = [ - alpha.* S - betaA.* S.* A - betaP.* S.* P - theta1.* S.* H + epsilon.* P + miu.*(P+A+H+R) + miuA.* A + miuH.* H;
-%          alpha.* S - epsilon.* P - gamma.* P - theta2.* P.* H - miu.* P;
-%          gamma.* P + sigma.* R.* A./(A+H+omega) + betaA.* S.* A + betaP.* S.* P - zeta.* A - theta3.* A.* H - (miu+miuA).* A;
-%          theta1.* S.* H + theta2.* P.* H + theta3.* A.* H + sigma.* R.* H./(A+H+omega) - niu.* H - (miu+miuH).* H;
-%          zeta.* A + niu.* H - sigma.* R.* A./(A+H+omega) - sigma.* R.* H./(A+H+omega) - miu.* R] ; 
-
-
-% maximimar prescricoes P minimizando o vicio A e H
-
-%% controlo (u) (adicionar ao niu) (passsagem de Heroina (H) para recuperados (R)) novo tratamento
-
-
-% zdot = [ - alpha.* S - betaA.* S.* A - betaP.* S.* P - theta1.* S.* H + epsilon.* P + miu.*(P+A+H+R) + miuA.* A + miuH.* H;
-%          alpha.* S - epsilon.* P - gamma.* P - theta2.* P.* H - miu.* P;
-%          gamma.* P + sigma.* R.* A./(A+H+omega) + betaA.* S.* A + betaP.* S.* P - zeta.* A - theta3.* A.* H - (miu+miuA).* A;
-%          theta1.* S.* H + theta2.* P.* H + theta3.* A.* H + sigma.* R.* H./(A+H+omega) - niu.* H - (miu+miuH).* H;
-%          zeta.* A + niu.* H - sigma.* R.* A./(A+H+omega) - sigma.* R.* H./(A+H+omega) - miu.* R] ; 
-
-% zdot = [ - alpha.* S - betaA.* S.* A - betaP.* S.* P - theta1.* S.* H + epsilon.* P + miu.*(P+A+H+R) + miuA.* A + miuH.* H;
-%          alpha.* S - epsilon.* P - gamma.* P - theta2.* P.* H - miu.* P;
-%          gamma.* P + sigma.* R.* A./(A+H+omega) + betaA.* S.* A + betaP.* S.* P - zeta.* A - theta3.* A.* H - (miu+miuA).* A;
-%          theta1.* S.* H + theta2.* P.* H + theta3.* A.* H + sigma.* R.* H./(A+H+omega) - niu.* H - (miu+miuH).* H -u*H; 
-%          zeta.* A + niu.* H - sigma.* R.* A./(A+H+omega) - sigma.* R.* H./(A+H+omega) - miu.* R + u*H] ; 
-
-
-% maximimar recuperados R minimizando tratamentos u (reduz custo)
-
-

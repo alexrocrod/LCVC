@@ -3,15 +3,15 @@ clear
 close all
 
 %% Read results from file
-name = "PDF4";
-fig1 = sprintf("VariaInicial/Ucontrol/Geral%s.jpg",name);
-fig2 = sprintf("VariaInicial/Ucontrol/I2%s.jpg",name);
-fig3 = sprintf("VariaInicial/Ucontrol/%s.jpg",name);
+% name = "PDF4";
+% fig1 = sprintf("VariaInicial/Ucontrol/Geral%s.jpg",name);
+% fig2 = sprintf("VariaInicial/Ucontrol/I2%s.jpg",name);
+% fig3 = sprintf("VariaInicial/Ucontrol/%s.jpg",name);
 
-% name = "ParamMau";
-% fig1 = sprintf("VariaParam/Ucontrol/Geral%s.jpg",name);
-% fig2 = sprintf("VariaParam/Ucontrol/I2%s.jpg",name);
-% fig3 = sprintf("VariaParam/Ucontrol/%s.jpg",name);
+name = "ParamBom";
+fig1 = sprintf("VariaParam/Ucontrol/Geral%s.jpg",name);
+fig2 = sprintf("VariaParam/Ucontrol/I2%s.jpg",name);
+fig3 = sprintf("VariaParam/Ucontrol/%s.jpg",name);
 
 
 fileID=fopen(sprintf('UcontrolV%s.txt',name),'r');
@@ -35,13 +35,13 @@ fprintf("Erro:%d\n",erro1)
 
 %% Plots init
 fh = figure();
-fh.WindowState = 'maximized';
+% fh.WindowState = 'maximized';
 plot(t, s, t, p, t, a, t, h, t, r, 'LineWidth',1.5); 
 legend('s', 'p', 'a', 'h', 'r'); 
 saveas(gcf,fig1)
 % 
 fh = figure();
-fh.WindowState = 'maximized'; 
+% fh.WindowState = 'maximized'; 
 plot(t, p, t, a, t, h, t, r, 'LineWidth',1.5); 
 legend('p', 'a', 'h', 'r');
 saveas(gcf,fig2)
