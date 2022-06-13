@@ -65,7 +65,7 @@ for t=1:steps
     
     % Task 5 -> Implememt the impedence boundary condition
     Ez(1,1:sizey) = Hy(1,1:sizey) * eta0; 
-    Ez(sizex,1:sizey) = - Hy(1,1:sizey) * eta0;
+    Ez(sizex,1:sizey) = - Hy(sizex,1:sizey) * eta0;
     
     % excitation
     %   Ez(sizex,1:sizey)=ones(1,sizey)*sin(.3*t);
