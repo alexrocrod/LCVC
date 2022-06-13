@@ -14,125 +14,103 @@ format short
 
 global alpha betaA betaP theta1 theta2 theta3 omega gamma epsilon miu miuA miuH sigma zeta niu; 
 
-%% Do PDF ParamNorm
-% alpha=0.27;
-% betaA=0.000878; 
-% betaP=0.0000654; 
-% theta1=0.222;
-% epsilon=2.53;
-% miu=0.0071; 
-% miuA=0.00883;   
-% miuH=0.0466;
-% gamma=0.00505;   
-% theta2=0.236; 
-% sigma=0.102;
-% zeta=0.198;
-% theta3=19.7; 
-% niu=0.000531;
-% omega=0.0000000001; %%% onde esta no pdf
+%% Escolha situação
+addpath("v0\","VariaParam\Matlab\","VariaParam\Ucontrol\" ,"VariaInicial\Matlab\","VariaInicial\Ucontrol\")
 
-%% Parametros simplificados
-% alpha=0.2;
-% betaA=0.0001; 
-% betaP=0.00001; 
-% theta1=0.2;
-% epsilon=2.5;
-% miu=0; 
-% miuA=0;   
-% miuH=0;
-% gamma=0.005;   
-% theta2=0.2; 
-% sigma=0.1;
-% zeta=0.2;
-% theta3=20; 
-% niu=0.0005;
-% omega=0.0000000001;
+% name = "PDF2"; % parametros e populacao do artigo %ParamNorm é igual
+% name = "PDF3"; % parametros do artigo com situação inicial má
+% name = "PDF4"; % parametros do artigo com situação inicial boa
+% name = "ParamBom"; % situacao inicial do artigo com bons parametros
+name = "ParamMau"; % situacao inicial do artigo com maus parametros
 
-%% Parametros muito maus ParamMau
+if (name=="PDF2" || name=="PDF3" || name=="PDF4")
+    fig1 = sprintf("VariaInicial/Matlab/Geral%s.jpg",name);
+    fig2 = sprintf("VariaInicial/Matlab/I2%s.jpg",name);
+    fig3 = sprintf("VariaInicial/Matlab/%s.jpg",name);
 
-alpha=0.3;
-betaA=0.01; 
-betaP=0.001; 
-theta1=0.5;
-epsilon=1;
-miu=0; 
-miuA=0;   
-miuH=0;
-gamma=0.05;   
-theta2=0.5; 
-sigma=0.2;
-zeta=0.01;
-theta3=20; 
-niu=0.00001;
-omega=0.0000000001;
+elseif (name=="ParamBom" || name=="ParamMau" || name=="ParamNorm")
+    fig1 = sprintf("VariaParam/Matlab/Geral%s.jpg",name);
+    fig2 = sprintf("VariaParam/Matlab/I2%s.jpg",name);
+    fig3 = sprintf("VariaParam/Matlab/%s.jpg",name);
+else
+    fprintf("Nome inválido")
+    return
+end
+
+%% Parametros
+
+if (name=="PDF2" || name=="PDF3" || name=="PDF4" || name=="ParamNorm")
+    alpha=0.27;
+    betaA=0.000878; 
+    betaP=0.0000654; 
+    theta1=0.222;
+    epsilon=2.53;
+    miu=0.0071; 
+    miuA=0.00883;   
+    miuH=0.0466;
+    gamma=0.00505;   
+    theta2=0.236; 
+    sigma=0.102;
+    zeta=0.198;
+    theta3=19.7; 
+    niu=0.000531;
+    omega=0.0000000001;
+elseif name=="ParamMau"
+    alpha=0.3;
+    betaA=0.01; 
+    betaP=0.001; 
+    theta1=0.5;
+    epsilon=1;
+    miu=0; 
+    miuA=0;   
+    miuH=0;
+    gamma=0.05;   
+    theta2=0.5; 
+    sigma=0.2;
+    zeta=0.01;
+    theta3=20; 
+    niu=0.00001;
+    omega=0.0000000001;
+elseif name=="ParamBom"
+    alpha=0.1;
+    betaA=0.0001; 
+    betaP=0.00001; 
+    theta1=0.1;
+    epsilon=3;
+    miu=0; 
+    miuA=0;   
+    miuH=0;
+    gamma=0.01;   
+    theta2=0.1; 
+    sigma=0.05;
+    zeta=0.1;
+    theta3=5; 
+    niu=0.05;
+    omega=0.0000000001;
+end
 
 
-%% Parametros muito bons 
-% alpha=0.01;
-% betaA=0; 
-% betaP=0; 
-% theta1=0.01;
-% epsilon=5;
-% miu=0; 
-% miuA=0;   
-% miuH=0;
-% gamma=0.01;   
-% theta2=0.01; 
-% sigma=0.01;
-% zeta=0.01;
-% theta3=1; 
-% niu=0.1;
-% omega=0.0000000001;
+%% População inicial
 
-%% Parametros bons ParamBom
-% alpha=0.1;
-% betaA=0.0001; 
-% betaP=0.00001; 
-% theta1=0.1;
-% epsilon=3;
-% miu=0; 
-% miuA=0;   
-% miuH=0;
-% gamma=0.01;   
-% theta2=0.1; 
-% sigma=0.05;
-% zeta=0.1;
-% theta3=5; 
-% niu=0.05;
-% omega=0.0000000001;
-
-%% 
-% PDF % usado no VarParam
-P0=0.095;
-A0=0.0071;
-H0=0.000465;
-R0=0.0507;
-
-% Ma situacao inicial
-% P0=0.05;
-% A0=0.05;
-% H0=0.005;
-% R0=0.0507;
-
-% Inicial Normal
-% P0=0.1;
-% A0=0.001;
-% H0=0.0001;
-% R0=0.001;
-
-% name = "PDF4";
-% fig1 = sprintf("VariaInicial/Matlab/Geral%s.jpg",name);
-% fig2 = sprintf("VariaInicial/Matlab/I2%s.jpg",name);
-% fig3 = sprintf("VariaInicial/Matlab/%s.jpg",name);
-
-name = "ParamMau";
-fig1 = sprintf("VariaParam/Matlab/Geral%s.jpg",name);
-fig2 = sprintf("VariaParam/Matlab/I2%s.jpg",name);
-fig3 = sprintf("VariaParam/Matlab/%s.jpg",name);
+if (name=="PDF2" || name=="ParamBom" || name=="ParamMau" || name=="ParamNorm")
+    P0=0.095;
+    A0=0.0071;
+    H0=0.000465;
+    R0=0.0507;
+elseif name=="PDF3"
+    P0=0.05;
+    A0=0.05;
+    H0=0.005;
+    R0=0.0507;
+elseif name=="PDF4"
+    P0=0.1;
+    A0=0.001;
+    H0=0.0001;
+    R0=0.001;
+end
 
 %% 
-% - final time -- 
-T = 10; %100
+T = 10;
 
 S0=1-P0-A0-H0-R0;
 
@@ -144,49 +122,34 @@ x0 = [S0; P0; A0; H0; R0];
 options = odeset('AbsTol',1e-12,'RelTol',1e-12) ;
 [t, z] = ode45(@sys, [0 T], x0, options);
 
-
-%% Making sure S+P+A+H+R=1
-erro1 = mean(sum(z,2) - ones(size(z,1),1));
-fprintf("Erro:%d\n",erro1)  
-
-%% «
-fh = figure();
-% fh.WindowState = 'maximized';
-% plot(t, z(:, 1),'-b', t, z(:, 2),'--r', t, z(:, 3), '.-g',t, z(:, 4),'-*y', t, z(:, 5),'-|k', 'LineWidth',1.5);
-plot(t, z(:, 1), t, z(:, 2), t, z(:, 3),t, z(:, 4), t, z(:, 5), 'LineWidth',1.5); 
-xlabel('time');  ylabel('Number individuals'); 
-legend('S', 'P', 'A', 'H', 'R')
-saveas(gcf,fig1)
-
-%% 
-fh = figure();
-% fh.WindowState = 'maximized'; 
-% plot(t, z(:, 2),'--r', t, z(:, 3), '.-g',t, z(:, 4),'-*y', t, z(:, 5),'-|k', 'LineWidth',1.5);
-plot(t, z(:, 2), t, z(:, 3),t, z(:, 4), t, z(:, 5), 'LineWidth',1.5);
-xlabel('time');  ylabel('Number individuals'); 
-legend('P', 'A', 'H', 'R')
-saveas(gca,fig2)
-
-% %%
-% figure; 
-% % plot(t, z(:, 3), '.-g',t, z(:, 4),'-*y', t, z(:, 5),'-|k', 'LineWidth',1.5); 
-% plot(t, z(:, 3),t, z(:, 4), t, z(:, 5), 'LineWidth',1.5);
-% xlabel('time');  ylabel('Number individuals'); 
-% legend('A', 'H', 'R')
-
-% return
-
-%% Plots
-fh = figure();
-fh.WindowState = 'maximized'; 
-cols = 3;
-rows = 2;
-
 s = z(:, 1); 
 p = z(:, 2); 
 a = z(:, 3); 
 h = z(:, 4);
 r = z(:, 5); 
+
+%% Making sure S+P+A+H+R=1
+erro1 = mean(sum(z,2) - ones(size(z,1),1));
+fprintf("Erro:%d\n",erro1)  
+
+%% 
+figure;
+plot(t, s, t, p, t, a,t, h, t, r, 'LineWidth',1.5); 
+xlabel('time');  ylabel('Number individuals'); 
+legend('S', 'P', 'A', 'H', 'R')
+saveas(gcf,fig1)
+
+%% 
+figure; 
+plot(t, p, t, a, t, h, t, r, 'LineWidth',1.5);
+xlabel('time');  ylabel('Number individuals'); 
+legend('P', 'A', 'H', 'R')
+saveas(gca,fig2)
+
+%% Plots
+figure;
+cols = 3;
+rows = 2;
 
 subplot(rows,cols,1)
 plot(t,s,'LineWidth',1.5); 
@@ -211,9 +174,7 @@ title("Recuperados (R)")
 saveas(gca,fig3)
 
 
-%%
-
-% -- System SIR -------------------
+%% System function
 
 function zdot=sys(t,z)
 

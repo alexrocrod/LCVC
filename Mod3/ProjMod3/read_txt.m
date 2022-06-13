@@ -3,15 +3,28 @@ clear
 close all
 
 %% Read results from file
-% name = "PDF4";
-% fig1 = sprintf("VariaInicial/Ucontrol/Geral%s.jpg",name);
-% fig2 = sprintf("VariaInicial/Ucontrol/I2%s.jpg",name);
-% fig3 = sprintf("VariaInicial/Ucontrol/%s.jpg",name);
 
-name = "ParamBom";
-fig1 = sprintf("VariaParam/Ucontrol/Geral%s.jpg",name);
-fig2 = sprintf("VariaParam/Ucontrol/I2%s.jpg",name);
-fig3 = sprintf("VariaParam/Ucontrol/%s.jpg",name);
+addpath("v0\","VariaParam\Matlab\","VariaParam\Ucontrol\" ,"VariaInicial\Matlab\","VariaInicial\Ucontrol\")
+
+% name = "PDF2"; % parametros e populacao do artigo %ParamNorm é igual
+% name = "PDF3"; % parametros do artigo com situação inicial má
+% name = "PDF4"; % parametros do artigo com situação inicial boa
+% name = "ParamBom"; % situacao inicial do artigo com bons parametros
+name = "ParamMau"; % situacao inicial do artigo com maus parametros
+
+
+if (name=="PDF2" || name=="PDF3" || name=="PDF4")
+    fig1 = sprintf("VariaInicial/Ucontrol/Geral%s.jpg",name);
+    fig2 = sprintf("VariaInicial/Ucontrol/I2%s.jpg",name);
+    fig3 = sprintf("VariaInicial/Ucontrol/%s.jpg",name);
+elseif (name=="ParamBom" || name=="ParamMau" || name=="ParamNorm")
+    fig1 = sprintf("VariaParam/Ucontrol/Geral%s.jpg",name);
+    fig2 = sprintf("VariaParam/Ucontrol/I2%s.jpg",name);
+    fig3 = sprintf("VariaParam/Ucontrol/%s.jpg",name);
+else
+    fprintf("Nome inválido")
+    return
+end
 
 
 fileID=fopen(sprintf('UcontrolV%s.txt',name),'r');
@@ -34,30 +47,20 @@ erro1 = mean(sum(x(:,2:6),2) - ones(size(x(:,2:6),1),1));
 fprintf("Erro:%d\n",erro1)
 
 %% Plots init
-fh = figure();
-% fh.WindowState = 'maximized';
+figure;
 plot(t, s, t, p, t, a, t, h, t, r, 'LineWidth',1.5); 
 legend('s', 'p', 'a', 'h', 'r'); 
 saveas(gcf,fig1)
-% 
-fh = figure();
-% fh.WindowState = 'maximized'; 
+
+
+figure;
 plot(t, p, t, a, t, h, t, r, 'LineWidth',1.5); 
 legend('p', 'a', 'h', 'r');
 saveas(gcf,fig2)
-% 
-% figure; 
-% plot(t, a, t, h, t, r, 'LineWidth',1.5); 
-% legend('a', 'h', 'r');
-% 
-% figure; 
-% plot(t, u, 'LineWidth',1.5); 
-% legend('u');
-
 
 %% Plots
-fh = figure();
-fh.WindowState = 'maximized'; 
+figure; 
+
 cols = 3;
 rows = 2;
 
