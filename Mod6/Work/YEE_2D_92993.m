@@ -53,19 +53,19 @@ Hy=zeros(sizexp1,sizey);
 Ez=zeros(sizex,sizey);
 
 % Task 6 -> Calculate middle of the x domain
-xmid = floor(sizex/2);
+xmid = floor(sizexp1/2);
 
 % Task 7 -> Calculate region of y : ymin+35dy<y<ymax-35dy
 ymax = sizey - 35;
-ymin = 35;
+ymin = 1 + 35;
 size_excite = ymax - ymin + 1;
 
 % simulation
 for t=1:steps
     
     % Task 5 -> Implememt the impedence boundary condition
-    Ez(1,1:sizey) = Hy(1,1:sizey) * eta0; 
-    Ez(sizex,1:sizey) = - Hy(sizex,1:sizey) * eta0;
+    Hy(1,1:sizey)=Ez(1,1:sizey)/eta0;
+    Hy(sizexp1,1:sizey)=-Ez(sizex,1:sizey)/eta0;
     
     % excitation
     %   Ez(sizex,1:sizey)=ones(1,sizey)*sin(.3*t);
@@ -94,10 +94,11 @@ for t=1:steps
     if t >= show
         mesh(Ez);   
         %   axis([0 sizex 0 sizey -1.5 1.5]); 
-
+        
         % Task 1 -> Extend to Complete Domain of sizex x sizey cells
         axis([0 sizex 0 sizey -1.5 1.5]); 
         xlabel('y'); ylabel('x');
+        title(sprintf('t=%d s', t))
         
         pause(0.1);
     end
